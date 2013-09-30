@@ -4,15 +4,15 @@ namespace Merci\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CatalogController extends Controller
+class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('MerciCatalogBundle:Catalog:index.html.twig');
+        return $this->render('MerciCatalogBundle:Default:index.html.twig');
     }
 
     public function productAction()
     {
-        return $this->render('MerciCatalogBundle:Catalog:product.html.twig');
+        return $this->render('MerciCatalogBundle:Default:product.html.twig');
     }
 }
