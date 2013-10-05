@@ -1,0 +1,3 @@
+cart:
+    pattern:  /
+    defaults: { _controller: MerciCartBundle:Default:index }

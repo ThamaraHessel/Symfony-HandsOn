@@ -4,7 +4,7 @@ namespace Merci\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CatalogController extends Controller
+class DefaultController extends Controller
 {
     public function indexAction()
     {
@@ -16,7 +16,7 @@ class CatalogController extends Controller
             throw $this->createNotFoundException('No products avaiable');
         }
 
-        return $this->render('MerciCatalogBundle:Catalog:index.html.twig',
+        return $this->render('MerciCatalogBundle:Default:index.html.twig',
             array('products' => $products)
         );
     }
@@ -31,7 +31,7 @@ class CatalogController extends Controller
             throw $this->createNotFoundException('No product found with id: ' . $id);
         }
 
-        return $this->render('MerciCatalogBundle:Catalog:product.html.twig',
+        return $this->render('MerciCatalogBundle:Default:product.html.twig',
             array('product' => $product)
         );
     }
@@ -51,13 +51,10 @@ class CatalogController extends Controller
         $products = $query->getResult();
 
         if (empty($products)) {
-            $this->get('session')->getFlashBag()->add(
-                'notice', 'Nenhum resultado encontrado para pesquisa: '.$find
-            );
-            return $this->redirect($this->generateUrl('homepage'));
+            throw $this->createNotFoundException('No products avaiable');
         }
 
-        return $this->render('MerciCatalogBundle:Catalog:index.html.twig',
+        return $this->render('MerciCatalogBundle:Default:index.html.twig',
             array('products' => $products, 'find' => $find)
         );
     }

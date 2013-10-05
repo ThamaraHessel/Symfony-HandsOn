@@ -2,3 +2,6 @@ merci_catalog:
     resource: "@MerciCatalogBundle/Resources/config/routing.yml"
     prefix:   /
 
+merci_cart:
+    resource: "@MerciCartBundle/Resources/config/routing.yml"
+    prefix:   /cart
