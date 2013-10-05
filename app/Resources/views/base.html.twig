@@ -19,6 +19,13 @@
             <ul class="nav navbar-nav">
               <li><a href="{{ path('homepage') }}">Catalogo</a></li>
             </ul>
+            <form action="{{ path('search') }}" class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" name="find" value="{% if find is defined %}{{ find }}{% endif %}" placeholder="Pesquisa"
+                class="form-control">
+              </div>
+              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+            </form>
           </div>
         </nav>
 

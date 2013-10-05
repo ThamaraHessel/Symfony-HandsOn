@@ -1,6 +1,11 @@
-{% extends 'MerciCatalogBundle::layout.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block content %}
+{% block title %}
+    Catalogo{{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <div class="container">
     <div class="row">
 
       {% for product in products %}
@@ -18,4 +23,5 @@
       {% endfor %}
 
     </div>
+  </div>
 {% endblock %}
