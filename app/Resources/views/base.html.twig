@@ -27,7 +27,14 @@
               <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Buscar</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="{{ path('cart') }}" class="glyphicon glyphicon-shopping-cart"> Carrinho (1)</a></li>
+              <li>
+                <a href="{{ path('cart') }}" class="glyphicon glyphicon-shopping-cart">
+                  Carrinho
+                  {% if app.session.get('cart') %}
+                    ({{ app.session.get('cart').quantity }})
+                  {% endif %}
+                </a>
+              </li>
             </ul>
           </div>
         </nav>
