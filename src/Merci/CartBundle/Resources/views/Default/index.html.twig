@@ -17,31 +17,51 @@
                 <th class="text-center">Preço</th>
                 <th class="text-right">Sub-Total</th>
             </tr>
+            {% for cartItem in app.session.get('cart') %}
             <tr>
                 <td>
-                    <a href="#"><img src="{{ asset('bundles/mercicatalog/images/fem-oculos-1.jpg') }}" alt="Nome do produto"></a>
+                    <a href="{{ path('product', {id: cartItem.product.id}) }}">
+                        <img src="{{ asset(cartItem.product.imagePath) }}" alt="{{ cartItem.product.name }}">
+                    </a>
                 </td>
-                <td><a href="#">Nome do produto</a></td>
+                <td><a href="{{ path('product', {id: cartItem.product.id}) }}">{{ cartItem.product.name }}</a></td>
                 <td class="text-center">
-                    <form action="{{ path('cart') }}">
-                        <input type="hidden" name="id" value="1">
-                        <select name="quantity">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                    <form action="{{ path('cart_update') }}">
+                        <input type="hidden" name="id" value="{{ cartItem.product.id }}">
+                        <select name="quantity" class="quantity">
+                            {% for i in 1..10 %}
+                            <option value="{{ i }}" {% if i == cartItem.quantity %}selected="selected"{% endif %}>
+                                {{ i }}
+                            </option>
+                            {% endfor %}
                         </select>
                     </form>
                 </td>
                 <td class="text-center">
-                    <a href="{{ path('cart') }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove-sign"></span></a>
+                    <a href="{{ path('cart_delete', {id: cartItem.product.id}) }}" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-remove-sign"></span>
+                    </a>
                 </td>
-                <td class="text-center">999,99</td>
-                <td class="text-right">999,99</td>
+                <td class="text-center">{{ cartItem.product.price }}</td>
+                <td class="text-right">{{ cartItem.product.price * cartItem.quantity }}</td>
             </tr>
+            {% endfor %}
             <tr>
                 <th colspan="5" class="text-right">TOTAL:</th>
-                <th class="text-right">999,00</th>
+                <th class="text-right">{{ app.session.get('cart').total }}</th>
+            </tr>
+            <tr>
+                <td colspan="6" class="text-right"><a href="#" class="btn btn-success btn-lg">Finalizar Compra</a></td>
             </tr>
         </table>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+    $('.quantity').change(function(){
+        $(this).parent('form').submit();
+    });
+    </script>
 {% endblock %}
