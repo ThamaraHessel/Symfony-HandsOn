@@ -32,12 +32,6 @@
           </div>
         </nav>
 
-        {% for flashMessage in app.session.flashbag.get('notice') %}
-            <div class="alert alert-warning alert-dismissable">
-                {{ flashMessage }}
-            </div>
-        {% endfor %}
-
         {% block body %}{% endblock %}
 
         {% block javascripts %}

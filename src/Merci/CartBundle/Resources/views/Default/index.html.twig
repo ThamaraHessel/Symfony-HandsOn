@@ -18,10 +18,13 @@
                 <th class="text-right">Sub-Total</th>
             </tr>
             <tr>
-                <td><img src="{{ asset('bundles/mercicatalog/images/fem-oculos-1.jpg') }}"></td>
-                <td>Nome do produto</td>
+                <td>
+                    <a href="#"><img src="{{ asset('bundles/mercicatalog/images/fem-oculos-1.jpg') }}" alt="Nome do produto"></a>
+                </td>
+                <td><a href="#">Nome do produto</a></td>
                 <td class="text-center">
                     <form action="{{ path('cart') }}">
+                        <input type="hidden" name="id" value="1">
                         <select name="quantity">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -30,7 +33,7 @@
                     </form>
                 </td>
                 <td class="text-center">
-                    <a href="#" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove-sign"></span></a>
+                    <a href="{{ path('cart') }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove-sign"></span></a>
                 </td>
                 <td class="text-center">999,99</td>
                 <td class="text-right">999,99</td>
@@ -38,6 +41,9 @@
             <tr>
                 <th colspan="5" class="text-right">TOTAL:</th>
                 <th class="text-right">999,00</th>
+            </tr>
+            <tr>
+                <td colspan="6" class="text-right"><a href="#" class="btn btn-success btn-lg">Finalizar Compra</a></td>
             </tr>
         </table>
     </div>

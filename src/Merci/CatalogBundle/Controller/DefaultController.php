@@ -4,7 +4,7 @@ namespace Merci\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CatalogController extends Controller
+class DefaultController extends Controller
 {
     public function indexAction()
     {
@@ -51,10 +51,7 @@ class CatalogController extends Controller
         $products = $query->getResult();
 
         if (empty($products)) {
-            $this->get('session')->getFlashBag()->add(
-                'notice', 'Nenhum resultado encontrado para pesquisa: '.$find
-            );
-            return $this->redirect($this->generateUrl('homepage'));
+            throw $this->createNotFoundException('No products avaiable');
         }
 
         return $this->render('MerciCatalogBundle:Default:index.html.twig',
