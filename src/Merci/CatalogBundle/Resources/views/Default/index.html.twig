@@ -1,12 +1,17 @@
-{% extends 'MerciCatalogBundle::layout.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block content %}
+{% block title %}
+    Catalogo{{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <div class="container">
     <div class="row">
 
       {% for product in products %}
       <div class="col-sm-6 col-md-3">
         <div class="thumbnail">
-          <img src="{{ image_path(product.imageName) }}" alt="{{ product.name }}">
+          <img src="{{ asset(product.imagePath) }}" alt="{{ product.name }}">
           <div class="caption">
             <h3>{{ product.name }}</h3>
             <p>{{ product.description }}</p>
@@ -18,4 +23,5 @@
       {% endfor %}
 
     </div>
+  </div>
 {% endblock %}

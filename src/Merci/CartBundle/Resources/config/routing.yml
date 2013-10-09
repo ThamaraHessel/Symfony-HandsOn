@@ -1,19 +1,19 @@
 cart:
     pattern:  /
-    defaults: { _controller: MerciCartBundle:Cart:index }
+    defaults: { _controller: MerciCartBundle:Default:index }
 
 cart_add:
     pattern:  /add/{id}
-    defaults: { _controller: MerciCartBundle:Cart:add }
+    defaults: { _controller: MerciCartBundle:Default:add }
     requirements:
         id:  \d+
 
 cart_delete:
     pattern:  /delete/{id}
-    defaults: { _controller: MerciCartBundle:Cart:delete }
+    defaults: { _controller: MerciCartBundle:Default:delete }
     requirements:
         id:  \d+
 
 cart_update:
     pattern:  /update
-    defaults: { _controller: MerciCartBundle:Cart:update }
+    defaults: { _controller: MerciCartBundle:Default:update }

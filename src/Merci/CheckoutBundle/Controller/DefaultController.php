@@ -4,7 +4,7 @@ namespace Merci\CheckoutBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CheckoutController extends Controller
+class DefaultController extends Controller
 {
     public function indexAction()
     {

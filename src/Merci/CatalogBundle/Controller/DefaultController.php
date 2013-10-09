@@ -4,7 +4,7 @@ namespace Merci\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CatalogController extends Controller
+class DefaultController extends Controller
 {
     public function indexAction()
     {
@@ -41,9 +41,14 @@ class CatalogController extends Controller
         $request = $this->getRequest();
         $find = $request->query->get('find');
 
-        $products = $this->getDoctrine()
-            ->getRepository('MerciCatalogBundle:Product')
-            ->searchByName($find);
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery('
+            SELECT p
+            FROM MerciCatalogBundle:Product p
+            WHERE p.name LIKE :find
+        ')->setParameter('find', '%'.$find.'%');
+
+        $products = $query->getResult();
 
         if (empty($products)) {
             $this->get('session')->getFlashBag()->add(
