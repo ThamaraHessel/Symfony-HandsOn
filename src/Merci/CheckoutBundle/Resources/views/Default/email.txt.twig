@@ -1,0 +1,22 @@
+Agradecemos a preferencia.
+
+Seu pedido foi realizado com sucesso e já esta sendo preparado para entrega.
+
+Dados do seu pedido:
+--------------------------------------------
+Nome: {{ user.name }}
+E-mail: {{ user.email }}
+Rua: {{ user.address.street }}
+Numero: {{ user.address.number }}
+CEP: {{ user.address.postalCode }}
+Cidade: {{ user.address.city }}
+Estado: {{ user.address.state }}
+
+{% for cartItem in cart %}
+--------------------------------------------
+Produto: {{ cartItem.product.name }}
+Quantidade: {{ cartItem.quantity }}
+Sub-total: {{ cartItem.product.price * cartItem.quantity }}
+{% endfor %}
+--------------------------------------------
+TOTAL: {{ cart.total }}

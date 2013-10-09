@@ -10,19 +10,22 @@
 
     <div class="row">
       <div class="col-md-5">
+        {% if error %}
+          <div class="alert alert-danger">{{ error.message }}</div>
+        {% endif %}
         <div class="panel panel-default">
           <div class="panel-body">
-            <form class="form-horizontal" role="form">
+            <form action="{{ path('login_check') }}" method="post" class="form-horizontal" role="form">
               <div class="form-group">
-                <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+                <label class="col-lg-2 control-label">E-mail</label>
                 <div class="col-lg-10">
-                  <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                  <input type="text" name="_username" value="{{ last_username }}" class="form-control" placeholder="E-mail">
                 </div>
               </div>
               <div class="form-group">
-                <label for="inputPassword1" class="col-lg-2 control-label">Senha</label>
+                <label class="col-lg-2 control-label">Senha</label>
                 <div class="col-lg-10">
-                  <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                  <input type="password" name="_password" class="form-control" placeholder="Password">
                 </div>
               </div>
               <div class="form-group">
@@ -38,7 +41,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">Faça seu cadastro para finalizar sua compra</div>
             <div class="panel-body text-center">
-                <a href="#" type="button" class="btn btn-primary btn-lg">Cadastre-se</a>
+                <a href="{{ path('register') }}" type="button" class="btn btn-primary btn-lg">Cadastre-se</a>
             </div>
           </div>
         </div>

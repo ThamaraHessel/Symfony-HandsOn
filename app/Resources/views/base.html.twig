@@ -18,6 +18,17 @@
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
               <li><a href="{{ path('homepage') }}">Catalogo</a></li>
+              {% if is_granted('ROLE_USER') %}
+                <li>
+                  <a href="{{ path('account') }}">Bem-Vindo: {{ app.user.username }}</a>
+                </li>
+                <li>
+                  <a href="{{ path('logout') }}">Logout</a>
+                </li>
+              {% else %}
+                <li><a href="{{ path('login') }}">Login</a></li>
+                <li><a href="{{ path('register') }}">Cadastre-se</a></li>
+              {% endif %}
             </ul>
             <form action="{{ path('search') }}" class="navbar-form navbar-left" role="search">
               <div class="form-group">

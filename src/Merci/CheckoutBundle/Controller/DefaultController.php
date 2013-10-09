@@ -1,0 +1,44 @@
+<?php
+
+namespace Merci\CheckoutBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class DefaultController extends Controller
+{
+    public function indexAction()
+    {
+        $session = $this->get('session');
+        $cart = $session->get('cart');
+        if (!$cart || $cart->count() == 0) {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+        return $this->render('MerciCheckoutBundle:Default:index.html.twig');
+    }
+
+    public function successAction()
+    {
+        $session = $this->get('session');
+        $cart = $session->get('cart');
+        if (!$cart || $cart->count() == 0) {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+        $user = $this->get('security.context')->getToken()->getUser();
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Merci Commerce: Pedido realizado com sucesso!')
+            ->setFrom('atendimento@merci.com')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'MerciCheckoutBundle:Default:email.txt.twig',
+                    array('user' => $user, 'cart' => $cart)
+                ));
+        $this->get('mailer')->send($message);
+
+        $session->set('cart', null);
+
+        return $this->render('MerciCheckoutBundle:Default:success.html.twig');
+    }
+}
