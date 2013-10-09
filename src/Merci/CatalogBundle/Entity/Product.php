@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Product
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Merci\CatalogBundle\Entity\ProductRepository")
+ * @ORM\Entity
  */
 class Product
 {
@@ -45,9 +45,9 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="image_name", type="string", length=255)
+     * @ORM\Column(name="image_path", type="string", length=255)
      */
-    private $imageName;
+    private $imagePath;
 
 
     /**
@@ -130,25 +130,25 @@ class Product
     }
 
     /**
-     * Set imageName
+     * Set imagePath
      *
-     * @param string $imageName
+     * @param string $imagePath
      * @return Product
      */
-    public function setImageName($imageName)
+    public function setImagePath($imagePath)
     {
-        $this->imageName = $imageName;
+        $this->imagePath = $imagePath;
 
         return $this;
     }
 
     /**
-     * Get imageName
+     * Get imagePath
      *
      * @return string
      */
-    public function getImageName()
+    public function getImagePath()
     {
-        return $this->imageName;
+        return $this->imagePath;
     }
 }
