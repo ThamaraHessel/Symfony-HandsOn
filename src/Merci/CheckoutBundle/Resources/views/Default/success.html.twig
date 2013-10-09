@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    Pedido com sucesso{{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Pedido com sucesso</h1>
+
+    <div class="row">
+      <div class="col-md-7">
+        <div class="panel panel-default">
+          <div class="panel-heading"><strong>Parabens, {{ app.user.name }}. Seu pedido foi realizado com sucesso</strong></div>
+          <div class="panel-body">
+            <p>Os dados do seu pedido foram enviados para o e-mail: {{ app.user.email }}</p>
+          </div>
+        </div>
+      </div>
+
+</div>
+{% endblock %}

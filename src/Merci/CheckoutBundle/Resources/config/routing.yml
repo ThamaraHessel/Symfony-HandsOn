@@ -1,3 +1,7 @@
 checkout:
     pattern:  /
-    defaults: { _controller: MerciCheckoutBundle:Checkout:index }
+    defaults: { _controller: MerciCheckoutBundle:Default:index }
+
+success:
+    pattern:  /success
+    defaults: { _controller: MerciCheckoutBundle:Default:success }
