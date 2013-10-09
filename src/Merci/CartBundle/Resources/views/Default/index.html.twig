@@ -21,7 +21,7 @@
             <tr>
                 <td>
                     <a href="{{ path('product', {id: cartItem.product.id}) }}">
-                        <img src="{{ image_path(cartItem.product.imageName, 1) }}" alt="{{ cartItem.product.name }}">
+                        <img src="{{ asset(cartItem.product.imagePath) }}" alt="{{ cartItem.product.name }}">
                     </a>
                 </td>
                 <td><a href="{{ path('product', {id: cartItem.product.id}) }}">{{ cartItem.product.name }}</a></td>
