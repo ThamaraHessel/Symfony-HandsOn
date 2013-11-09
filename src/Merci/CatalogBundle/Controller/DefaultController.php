@@ -4,7 +4,7 @@ namespace Merci\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CatalogController extends Controller
+class DefaultController extends Controller
 {
     public function indexAction()
     {
