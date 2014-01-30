@@ -37,7 +37,7 @@ class DefaultController extends Controller
                 ));
         $this->get('mailer')->send($message);
 
-        $session->set('cart', null);
+        $session->remove('cart');
 
         return $this->render('MerciCheckoutBundle:Default:success.html.twig');
     }
